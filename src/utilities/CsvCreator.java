@@ -1,6 +1,5 @@
 package utilities;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -25,10 +24,8 @@ public class CsvCreator {
 	 */
 	public void createCsvFileFromJson(String jsonContent, String fileName)
 			throws IOException {
-		
-		String pathToCsvFile = new File(fileName).getAbsolutePath();
 
-		FileWriter writer = new FileWriter(pathToCsvFile + fileName);
+		FileWriter writer = new FileWriter(fileName);
 		JSONArray jsonArray = new JSONArray(jsonContent);
 
 		writer.append(id + ";");
