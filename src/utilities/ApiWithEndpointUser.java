@@ -29,7 +29,6 @@ public class ApiWithEndpointUser {
 		
 		line = bufInput.readLine();
 		while (line != null) {
-			System.out.println(line);
 			jsonContent += line;
 			line = bufInput.readLine();
 		}

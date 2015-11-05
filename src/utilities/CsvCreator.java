@@ -1,5 +1,6 @@
 package utilities;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -8,7 +9,6 @@ import org.json.JSONObject;
 
 public class CsvCreator {
 
-	private static String pathToCsvFile = "data/";
 	private static String id = "_id";
 	private static String name = "name";
 	private static String type = "type";
@@ -25,6 +25,8 @@ public class CsvCreator {
 	 */
 	public void createCsvFileFromJson(String jsonContent, String fileName)
 			throws IOException {
+		
+		String pathToCsvFile = new File(fileName).getAbsolutePath();
 
 		FileWriter writer = new FileWriter(pathToCsvFile + fileName);
 		JSONArray jsonArray = new JSONArray(jsonContent);
@@ -35,6 +37,10 @@ public class CsvCreator {
 		writer.append(latitude + ";");
 		writer.append(longitude + ";");
 		writer.append("\n");
+		
+		if (jsonArray.length() == 0){
+			System.out.println("No results found for the desired city");
+		}
 
 		for (int i = 0; i < jsonArray.length(); i++) {
 			writer.append(jsonArray.getJSONObject(i).get(id).toString() + ";");
